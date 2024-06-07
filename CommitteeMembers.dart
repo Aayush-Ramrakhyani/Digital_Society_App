@@ -5,10 +5,9 @@ import 'package:digital_society/ViewMembers.dart';
 import 'package:digital_society/ViewNotice.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
 class CommitteePage extends StatefulWidget {
-  String? name;
-  String? id;
+  final String? name;
+  final String? id;
   CommitteePage({super.key, required this.name, required this.id});
 
   @override
@@ -23,95 +22,200 @@ class _CommitteePageState extends State<CommitteePage> {
         backgroundColor: Colors.blue[400],
         title: Text("Welcome ${widget.name}"),
       ),
-      drawer: Drawer(
-        backgroundColor: Colors.blue[400],
-        child: Column(
-          children: [
-            Container(
-              height: 30,
-              width: 200,
-              child: Text(
-                "THE SEASIDE CO-OP",
-                style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w700),
-              ),
-            ),
-            Divider(
-              color: Colors.black,
-            ),
-            ListTile(
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: GridView.count(
+          crossAxisCount: 2,  // Two columns
+          crossAxisSpacing: 16.0,  // Space between columns
+          mainAxisSpacing: 16.0,  // Space between rows
+          children: <Widget>[
+            GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ViewMembersPage(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewMembersPage(),
+                  ),
+                );
               },
-              leading: Icon(Icons.person, color: Colors.black),
-              title: Text(
-                "View Members",
-                style: TextStyle(color: Colors.black),
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.person,
+                      size: 50.0,
+                      color: Colors.blue[400],
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'View Members',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue[400],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
-            ListTile(
+            GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          ViewNoticePage(name: widget.name, id: widget.id),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewNoticePage(
+                      name: widget.name,
+                      id: widget.id,
+                    ),
+                  ),
+                );
               },
-              leading: Icon(Icons.note_sharp, color: Colors.black),
-              title: Text(
-                "View Notice",
-                style: TextStyle(color: Colors.black),
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.note_sharp,
+                      size: 50.0,
+                      color: Colors.blue[400],
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'View Notice',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue[400],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
-            ListTile(
+            GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ViewComplaintsPage(),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ViewComplaintsPage(),
+                  ),
+                );
               },
-              leading: Icon(Icons.report_gmailerrorred, color: Colors.black),
-              title: Text(
-                "View Complaints",
-                style: TextStyle(color: Colors.black),
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.report_gmailerrorred,
+                      size: 50.0,
+                      color: Colors.blue[400],
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'View Complaints',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue[400],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
-            ListTile(
+            GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          AddMembersScreen(name: widget.name, id: widget.id),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddMembersScreen(
+                      name: widget.name,
+                      id: widget.id,
+                    ),
+                  ),
+                );
               },
-              leading: Icon(Icons.person_add, color: Colors.black),
-              title: Text(
-                "New Member",
-                style: TextStyle(color: Colors.black),
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.person_add,
+                      size: 50.0,
+                      color: Colors.blue[400],
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'New Member',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue[400],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
-            ListTile(
+            GestureDetector(
               onTap: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          AddNoticeScreen(name: widget.name, id: widget.id),
-                    ));
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AddNoticeScreen(
+                      name: widget.name,
+                      id: widget.id,
+                    ),
+                  ),
+                );
               },
-              leading: Icon(Icons.note_add, color: Colors.black),
-              title: Text(
-                "Issue Notice",
-                style: TextStyle(color: Colors.black),
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(
+                      Icons.note_add,
+                      size: 50.0,
+                      color: Colors.blue[400],
+                    ),
+                    SizedBox(height: 8.0),
+                    Text(
+                      'Issue Notice',
+                      style: TextStyle(
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue[400],
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

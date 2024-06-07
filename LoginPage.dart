@@ -73,7 +73,7 @@ class _MyLoginPageState extends State<MyLoginPage> {
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
-           color: Colors.black
+           color: Colors.blue
           ),
           child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
