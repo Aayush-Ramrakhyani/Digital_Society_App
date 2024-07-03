@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:digital_society/AddComplaints.dart';
+import 'package:digital_society/LoginPage.dart';
+import 'package:digital_society/ViewMembers.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -48,7 +50,6 @@ class _MembersPageState extends State<MembersPage> {
       List<Notice> Notices =
           jsonData.map((json) => Notice.fromJson(json)).toList();
       return Notices;
-      // return Notice.fromJson(jsonDecode(response.body));
     } else {
       throw Exception("something went wrong");
     }
@@ -56,7 +57,6 @@ class _MembersPageState extends State<MembersPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     fetchData().then(
       (value) {
@@ -72,7 +72,15 @@ class _MembersPageState extends State<MembersPage> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: Text("Welcome ${widget.name}"),
+          backgroundColor: Colors.blue[400],
+          title: Text(
+            "Welcome ${widget.name}",
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
           actions: [
             IconButton(
                 onPressed: () {
@@ -83,42 +91,105 @@ class _MembersPageState extends State<MembersPage> {
                             AddComplaintsPage(name: widget.name, id: widget.id),
                       ));
                 },
-                icon: Icon(Icons.error)),
-            IconButton(onPressed: () {}, icon: Icon(Icons.family_restroom))
+                icon: Icon(
+                  Icons.error,
+                  color: Colors.white,
+                )),
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ViewMembersPage(),
+                    ),
+                  );
+                },
+                icon: Icon(
+                  Icons.family_restroom,
+                  color: Colors.white,
+                )),
+            IconButton(
+              onPressed: () {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyLoginPage()),
+                    (Route<dynamic> route) => false,
+                  );
+              },
+              icon: Icon(
+                Icons.logout,
+                color: Colors.white,
+              ),
+            ),
           ],
         ),
         body: ListView.builder(
           itemCount: myFutureData.length,
           itemBuilder: (context, index) {
-            return Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                elevation: 4.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                shadowColor: Colors.blueAccent.withOpacity(0.2),
+                child: Container(
+                  padding: EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12.0),
+                    gradient: LinearGradient(
+                      colors: [Colors.blue[300]!, Colors.blue[400]!],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Text("Head: ${myFutureData[index].Head}"),
-                          SizedBox(
-                            width: 25,
+                          Expanded(
+                            child: Text(
+                              "Head: ${myFutureData[index].Head}",
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
-                          Text("Date: ${myFutureData[index].Date}"),
+                          Text(
+                            "Date: ${myFutureData[index].Date}",
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white70,
+                            ),
+                          ),
                         ],
                       ),
-                      SizedBox(
-                        height: 5,
+                      SizedBox(height: 8.0),
+                      Divider(
+                        color: Colors.white54,
+                        thickness: 1.0,
                       ),
-                      Divider(),
-                      SizedBox(
-                        height: 5,
+                      SizedBox(height: 8.0),
+                      Text(
+                        "${myFutureData[index].Content}",
+                        style: TextStyle(
+                          fontSize: 16.0,
+                          color: Colors.white,
+                        ),
                       ),
-                      Text("${myFutureData[index].Content}"),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text("IssueBy: ${myFutureData[index].IssueBy}"),
-                      SizedBox(
-                        height: 10,
+                      SizedBox(height: 8.0),
+                      Text(
+                        "IssueBy: ${myFutureData[index].IssueBy}",
+                        style: TextStyle(
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white70,
+                        ),
                       ),
                     ],
                   ),
