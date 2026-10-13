@@ -97,4 +97,19 @@ Pull requests are welcome. For major changes please open an issue first.
 
 ---
 
+## 🎓 Internship Project
+
+This project was built as part of an internship at **TOPS Technology**, Ahmedabad.
+
+| Detail | Info |
+|--------|------|
+| **Organization** | TOPS Technology |
+| **Location** | Ahmedabad, Gujarat, India |
+| **Type** | Internship Project |
+| **Domain** | Full-Stack Mobile Development |
+
+The goal was to design and develop a real-world society management solution from scratch — covering requirement gathering, UI design, backend API development, database design, and final deployment-ready build.
+
+---
+
 *Built with Flutter & FastAPI · Offline-capable · No third-party auth*
