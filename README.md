@@ -99,7 +99,7 @@ Pull requests are welcome. For major changes please open an issue first.
 
 ## 🎓 Internship Project
 
-This project was built as part of an internship at **TOPS Technology**, Ahmedabad.
+This project was built as part of an internship at **TOPS Technology**, Ahmedabad, in collaboration with their team.
 
 | Detail | Info |
 |--------|------|
@@ -109,6 +109,20 @@ This project was built as part of an internship at **TOPS Technology**, Ahmedaba
 | **Domain** | Full-Stack Mobile Development |
 
 The goal was to design and develop a real-world society management solution from scratch — covering requirement gathering, UI design, backend API development, database design, and final deployment-ready build.
+
+---
+
+## 🌍 Real-World Deployment
+
+This app was not just a project — it was actively sold and deployed across housing societies in Ahmedabad.
+
+| Metric | Result |
+|--------|--------|
+| 🏘️ Societies onboarded | **~15 housing societies** |
+| 🏠 Households using the app | **500+** |
+| 📍 Region | Ahmedabad, Gujarat, India |
+
+The deployment involved visiting societies in person, demonstrating the app to committee members, onboarding residents, and setting up the backend for each society. This gave the project real-world validation beyond a typical internship deliverable.
 
 ---
 
