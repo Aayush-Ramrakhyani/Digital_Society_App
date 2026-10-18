@@ -4,6 +4,10 @@
 
 Griha is a full-stack app built for housing societies to manage residents, complaints, notices, and maintenance fees — all from a single platform. It supports two roles with separate, purpose-built experiences: **Committee** and **Member**.
 
+Built for TOPS Technologys as part of a internship contract (May 2024).
+
+
+
 ---
 
 ## Real-World Impact
