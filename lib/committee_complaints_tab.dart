@@ -301,6 +301,7 @@ class _UpdateSheetState extends State<_UpdateSheet> {
   Future<void> _save() async {
     setState(() => _saving = true);
     try {
+      // finishDate is only stamped when moving to Resolved; stays null otherwise
       final finishDate = _status == 'Resolved'
           ? DateFormat('yyyy-MM-dd').format(DateTime.now())
           : null;

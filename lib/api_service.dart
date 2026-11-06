@@ -36,6 +36,7 @@ class ApiService {
     throw Exception('PUT $path failed (${res.statusCode})');
   }
 
+  // Fire-and-forget: backend returns 204 No Content, nothing to parse
   static Future<void> _delete(String path) async {
     await http.delete(Uri.parse('$baseUrl$path'));
   }

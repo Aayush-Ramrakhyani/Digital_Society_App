@@ -352,6 +352,7 @@ class _AddMaintenanceSheetState extends State<_AddMaintenanceSheet> {
     _loadMembers();
   }
 
+  // Pre-fetches members so the Autocomplete widget can suggest house numbers as the user types
   Future<void> _loadMembers() async {
     try {
       final data = await ApiService.getAllDetails();

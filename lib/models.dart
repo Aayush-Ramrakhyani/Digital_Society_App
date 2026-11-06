@@ -18,6 +18,7 @@ class MemberCredential {
         role: j['role'] ?? 'member',
       );
 
+  // Only these three roles have elevated access; all others are treated as regular members
   bool get isCommittee =>
       role == 'chairman' || role == 'secretary' || role == 'treasurer';
 }
@@ -93,6 +94,7 @@ class Complaint {
   final String title;
   final String description;
   final String date;
+  // Mutable so the committee update sheet can patch these in-place without a full reload
   String status;
   String? finishDate;
   String? action;

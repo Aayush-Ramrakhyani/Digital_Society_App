@@ -56,6 +56,8 @@ class _LoginPageState extends State<LoginPage>
     }
   }
 
+  // Auth is done client-side: we fetch all member credentials once and match locally.
+  // This keeps the backend simple; replace with a /login endpoint if security tightens.
   Future<void> _login() async {
     final houseno = _housenoCtrl.text.trim().toUpperCase();
     final password = _passwordCtrl.text.trim();
@@ -72,6 +74,7 @@ class _LoginPageState extends State<LoginPage>
       return;
     }
 
+    // Brief delay so the spinner doesn't flash and disappear instantly
     await Future.delayed(const Duration(milliseconds: 300));
 
     final match = _members

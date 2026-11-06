@@ -56,8 +56,10 @@ class _ProfileTabState extends State<ProfileTab> {
     await Future.wait([_loadFamily(), _loadMaintenance()]);
   }
 
+  // Opens a registered UPI app via deep link; falls back to showing bank details
+  // if no UPI app handles the intent (e.g. on web or desktop).
+  // Replace societyupi@okaxis with the actual society UPI ID before deployment.
   Future<void> _payUPI(Maintenance m) async {
-    // Replace societyupi@okaxis with the actual society UPI ID
     const upiId = 'societyupi@okaxis';
     final amount = m.amount.toStringAsFixed(0);
     final note = Uri.encodeComponent('Maintenance ${m.month} ${m.year}');
