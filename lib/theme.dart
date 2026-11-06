@@ -1,3 +1,11 @@
+/*
+ * theme.dart
+ *
+ * App-wide color palette (Deep Violet + Saffron) and Material 3 theme
+ * configuration. Also exports the headerGradient BoxDecoration reused
+ * in every AppBar's flexibleSpace across the app.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -24,7 +32,7 @@ class AppTheme {
 
   static ThemeData get light {
     final base = ThemeData(
-      useMaterial3: true,
+      useMaterial3: true, // required for NavigationBar, ChoiceChip, and FilledButton styles
       colorScheme: ColorScheme.fromSeed(
         seedColor: primary,
         primary: primary,
@@ -115,7 +123,7 @@ class AppTheme {
   }
 }
 
-// Reusable gradient decoration for hero sections
+// Shared gradient used in every AppBar's flexibleSpace — keeps all headers visually consistent
 BoxDecoration get headerGradient => const BoxDecoration(
   gradient: LinearGradient(
     colors: [AppTheme.primaryDark, AppTheme.primary, AppTheme.primaryLight],

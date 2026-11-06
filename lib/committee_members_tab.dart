@@ -1,3 +1,12 @@
+/*
+ * committee_members_tab.dart
+ *
+ * Committee view of all registered households. Each card is an expandable
+ * tile showing the family name, house number, and individual family members.
+ * Supports live search by house number or family name. Navigates to
+ * AddMemberPage to register new households.
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'models.dart';
@@ -121,7 +130,7 @@ class _MemberTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Theme(
-        data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+        data: Theme.of(context).copyWith(dividerColor: Colors.transparent), // removes the default divider ExpansionTile draws between header and children
         child: ExpansionTile(
           tilePadding:
               const EdgeInsets.symmetric(horizontal: 16, vertical: 6),

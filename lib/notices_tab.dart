@@ -1,3 +1,11 @@
+/*
+ * notices_tab.dart
+ *
+ * Displays all community notices for residents with live search filtering
+ * on both the heading and content. Supports pull-to-refresh.
+ * Used inside MemberHome as the first tab.
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'models.dart';
@@ -42,7 +50,7 @@ class _NoticesTabState extends State<NoticesTab> {
     _search = q;
     _filtered = _notices
         .where((n) =>
-            n.head.toLowerCase().contains(q.toLowerCase()) ||
+            n.head.toLowerCase().contains(q.toLowerCase()) || // search matches heading OR body
             n.content.toLowerCase().contains(q.toLowerCase()))
         .toList();
   }

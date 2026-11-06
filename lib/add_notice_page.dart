@@ -1,3 +1,11 @@
+/*
+ * add_notice_page.dart
+ *
+ * Form page for committee members to issue a new society notice.
+ * The issuer's family name is passed in and stored with the notice.
+ * Returns true to the caller on success so the notices list can refresh.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'api_service.dart';
@@ -44,7 +52,7 @@ class _AddNoticePageState extends State<AddNoticePage> {
         content: Text('Notice issued successfully!'),
         backgroundColor: AppTheme.success,
       ));
-      Navigator.of(context).pop(true);
+      Navigator.of(context).pop(true); // true signals CommitteeNoticesTab to reload
     } catch (e) {
       if (!mounted) return;
       setState(() => _loading = false);

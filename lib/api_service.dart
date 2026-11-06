@@ -1,3 +1,12 @@
+/*
+ * api_service.dart
+ *
+ * Centralised HTTP client for the FastAPI backend.
+ * All network calls go through the private _get / _post / _put / _delete
+ * helpers so error handling is consistent across the app.
+ * Change baseUrl to switch between emulator, device, and production.
+ */
+
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'models.dart';

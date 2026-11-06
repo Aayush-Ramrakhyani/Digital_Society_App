@@ -1,3 +1,12 @@
+/*
+ * add_member_page.dart
+ *
+ * Two-step form for registering a new household. Step 0 captures the house
+ * number, family name, and login password. Step 1 optionally adds individual
+ * family members (name, age, gender, contact). Members can be skipped entirely.
+ * Uses a simple _step integer as a local state machine to switch between steps.
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'theme.dart';
@@ -108,7 +117,7 @@ class _AddMemberPageState extends State<AddMemberPage> {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(20),
       child: Column(children: [
-        _StepBar(current: 0),
+        const _StepBar(current: 0),
         const SizedBox(height: 28),
         TextField(
           controller: _houseCtrl,
@@ -159,8 +168,8 @@ class _AddMemberPageState extends State<AddMemberPage> {
 
   Widget _buildStep1() {
     return Column(children: [
-      Padding(
-        padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+      const Padding(
+        padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
         child: _StepBar(current: 1),
       ),
       Padding(

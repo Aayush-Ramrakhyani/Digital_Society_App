@@ -1,3 +1,12 @@
+/*
+ * complaints_tab.dart
+ *
+ * Shows complaints filed by this household. Supports text search and
+ * status chip filters (All / Pending / In Progress / Resolved).
+ * The state class is intentionally public (ComplaintsTabState, not _) so
+ * MemberHome can hold a GlobalKey and call load() after adding a complaint.
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'models.dart';
@@ -11,7 +20,7 @@ class ComplaintsTab extends StatefulWidget {
   State<ComplaintsTab> createState() => ComplaintsTabState();
 }
 
-class ComplaintsTabState extends State<ComplaintsTab> {
+class ComplaintsTabState extends State<ComplaintsTab> { // public so MemberHome's GlobalKey can reach load()
   List<Complaint> _complaints = [];
   List<Complaint> _filtered = [];
   bool _loading = true;

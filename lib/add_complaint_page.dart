@@ -1,3 +1,11 @@
+/*
+ * add_complaint_page.dart
+ *
+ * Form page for residents to file a new complaint. Submits to the backend
+ * with today's date and an initial status of 'Pending'. Returns true to the
+ * caller on success so the complaints list can refresh immediately.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'api_service.dart';
@@ -45,7 +53,7 @@ class _AddComplaintPageState extends State<AddComplaintPage> {
         content: Text('Complaint submitted successfully!'),
         backgroundColor: AppTheme.success,
       ));
-      Navigator.of(context).pop(true);
+      Navigator.of(context).pop(true); // true signals MemberHome to reload the complaints list
     } catch (e) {
       if (!mounted) return;
       setState(() => _loading = false);

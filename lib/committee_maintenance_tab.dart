@@ -1,3 +1,12 @@
+/*
+ * committee_maintenance_tab.dart
+ *
+ * Committee view of all maintenance fee records. Shows pending/paid summary
+ * pills, supports search and status filtering. The committee can mark a due
+ * as paid or add new records via a bottom sheet with an autocomplete
+ * house-number picker that pre-fetches registered members.
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'models.dart';
@@ -77,7 +86,7 @@ class _CommitteeMaintenanceTabState extends State<CommitteeMaintenanceTab> {
     if (confirm != true) return;
     try {
       final now = DateTime.now();
-      final date =
+      final date = // manual ISO-8601 format — avoids adding an intl dependency here
           '${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}';
       await ApiService.updateMaintenance(m.id!, {
         'status': 'Paid',

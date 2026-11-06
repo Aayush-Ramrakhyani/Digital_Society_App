@@ -1,3 +1,12 @@
+/*
+ * committee_complaints_tab.dart
+ *
+ * Committee view of all society-wide complaints. Supports text search and
+ * status filters. Tapping a card opens _UpdateSheet — a bottom sheet where
+ * the committee can change the status, record action taken, and leave
+ * feedback for the resident. Stamping a finish date happens only on Resolved.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'api_service.dart';
@@ -76,6 +85,7 @@ class _CommitteeComplaintsTabState extends State<CommitteeComplaintsTab> {
     }
   }
 
+  // isScrollControlled lets the sheet grow tall enough to avoid the keyboard
   void _openUpdate(Complaint c) {
     showModalBottomSheet(
       context: context,

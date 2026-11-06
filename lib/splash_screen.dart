@@ -1,3 +1,13 @@
+/*
+ * splash_screen.dart
+ *
+ * Animated splash screen shown at app startup. Runs a 1800 ms reveal
+ * sequence (arc rings, logo pop, staggered letter slide, tagline fade)
+ * then automatically navigates to LoginPage after 3400 ms.
+ * Contains three animation controllers, a CustomPainter (_RingPainter),
+ * and a wave-dots loader widget (_WaveDots).
+ */
+
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
@@ -93,6 +103,7 @@ class _SplashScreenState extends State<SplashScreen>
 
     _main.forward();
 
+    // 3400 ms gives the 1800 ms animation time to finish plus a ~1.5 s hold before navigating
     Timer(const Duration(milliseconds: 3400), () {
       if (!mounted) return;
       Navigator.of(context).pushReplacement(
@@ -332,6 +343,7 @@ class _RingPainter extends CustomPainter {
     }
   }
 
+  // Only repaint when any animated value actually changes — avoids unnecessary redraws
   @override
   bool shouldRepaint(_RingPainter old) =>
       old.progress != progress ||

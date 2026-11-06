@@ -1,3 +1,12 @@
+/*
+ * profile_tab.dart
+ *
+ * Shows the resident's household info, registered family members, and
+ * maintenance dues. Pending dues have a Pay button that opens a UPI
+ * deep link; falls back to a bank-details bottom sheet if no UPI app
+ * is installed. Family and maintenance data are loaded in parallel.
+ */
+
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'api_service.dart';
@@ -98,7 +107,7 @@ class _ProfileTabState extends State<ProfileTab> {
           const SizedBox(height: 16),
           _InfoRow(label: 'Amount', value: '₹ ${m.amount.toStringAsFixed(0)}'),
           _InfoRow(label: 'For', value: '${m.month} ${m.year}'),
-          _InfoRow(label: 'UPI ID', value: 'societyupi@okaxis'),
+          const _InfoRow(label: 'UPI ID', value: 'societyupi@okaxis'),
           const _InfoRow(label: 'Account Name', value: 'Griha Society'),
           const SizedBox(height: 8),
           Container(
@@ -181,20 +190,20 @@ class _ProfileTabState extends State<ProfileTab> {
           const SizedBox(height: 24),
 
           // Family members section
-          _SectionHeader(title: 'Family Members', icon: Icons.family_restroom_rounded),
+          const _SectionHeader(title: 'Family Members', icon: Icons.family_restroom_rounded),
           const SizedBox(height: 10),
           if (_loadingFamily)
             const Center(
                 child: Padding(padding: EdgeInsets.all(20), child: CircularProgressIndicator()))
           else if (_family.isEmpty)
-            _EmptyCard(message: 'No family members added yet.')
+            const _EmptyCard(message: 'No family members added yet.')
           else
             ..._family.map((f) => _FamilyCard(member: f)),
 
           const SizedBox(height: 24),
 
           // Maintenance section
-          _SectionHeader(
+          const _SectionHeader(
               title: 'Maintenance Dues',
               icon: Icons.account_balance_wallet_rounded),
           const SizedBox(height: 10),
@@ -202,7 +211,7 @@ class _ProfileTabState extends State<ProfileTab> {
             const Center(
                 child: Padding(padding: EdgeInsets.all(20), child: CircularProgressIndicator()))
           else if (_maintenance.isEmpty)
-            _EmptyCard(message: 'No maintenance records yet. Contact the committee.')
+            const _EmptyCard(message: 'No maintenance records yet. Contact the committee.')
           else
             ..._maintenance.map((m) => _MaintenanceCard(
                   m: m,

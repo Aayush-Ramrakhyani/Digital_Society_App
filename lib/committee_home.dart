@@ -1,3 +1,11 @@
+/*
+ * committee_home.dart
+ *
+ * Root scaffold for committee members (chairman, secretary, treasurer).
+ * Hosts five tabs via IndexedStack: Dashboard, Members, Complaints,
+ * Notices, and Fees. Displays the member's role as a pill badge in the AppBar.
+ */
+
 import 'package:flutter/material.dart';
 import 'models.dart';
 import 'theme.dart';

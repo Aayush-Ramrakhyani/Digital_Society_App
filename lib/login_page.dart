@@ -1,3 +1,12 @@
+/*
+ * login_page.dart
+ *
+ * Login screen for all users (residents and committee members).
+ * Authentication is done client-side: member credentials are fetched once
+ * from the backend and matched locally. On success the user is routed to
+ * CommitteeHome or MemberHome depending on their role.
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'models.dart';
@@ -89,6 +98,7 @@ class _LoginPageState extends State<LoginPage>
     }
     final member = match.first;
     if (!mounted) return;
+    // Route to the correct home screen based on the member's role
     Navigator.of(context).pushReplacement(PageRouteBuilder(
       pageBuilder: (_, __, ___) =>
           member.isCommittee ? CommitteeHome(member: member) : MemberHome(member: member),

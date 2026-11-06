@@ -1,3 +1,12 @@
+/*
+ * member_home.dart
+ *
+ * Root scaffold for regular residents. Hosts three tabs via IndexedStack:
+ * Notices, Complaints, and Profile. Holds a GlobalKey for ComplaintsTab so
+ * the list can be refreshed after a new complaint is filed from AddComplaintPage.
+ * The FAB is only visible on the Complaints tab.
+ */
+
 import 'package:flutter/material.dart';
 import 'models.dart';
 import 'theme.dart';
@@ -17,7 +26,7 @@ class MemberHome extends StatefulWidget {
 
 class _MemberHomeState extends State<MemberHome> {
   int _idx = 0;
-  final _complaintsKey = GlobalKey<ComplaintsTabState>();
+  final _complaintsKey = GlobalKey<ComplaintsTabState>(); // needed to call load() on the tab after adding a complaint
 
   void _logout() {
     Navigator.of(context).pushAndRemoveUntil(
@@ -68,7 +77,7 @@ class _MemberHomeState extends State<MemberHome> {
           ProfileTab(member: widget.member),
         ],
       ),
-      floatingActionButton: _idx == 1
+      floatingActionButton: _idx == 1 // FAB is shown only on the Complaints tab (index 1)
           ? FloatingActionButton(
               onPressed: _openAddComplaint,
               tooltip: 'File a complaint',

@@ -1,3 +1,12 @@
+/*
+ * models.dart
+ *
+ * All data model classes (plain Dart objects) used across the app.
+ * Every class has a fromJson factory for deserialising REST API responses.
+ * Models: MemberCredential, FamilyMember, MemberWithFamily,
+ *         Notice, Complaint, Maintenance, DashboardStats.
+ */
+
 class MemberCredential {
   final String houseno;
   final String familyname;
@@ -11,7 +20,7 @@ class MemberCredential {
     required this.role,
   });
 
-  factory MemberCredential.fromJson(Map<String, dynamic> j) => MemberCredential(
+  factory MemberCredential.fromJson(Map<String, dynamic> j) => MemberCredential( // role defaults to 'member' if absent
         houseno: j['houseno'] ?? '',
         familyname: j['familyname'] ?? '',
         password: j['password'] ?? '',
@@ -153,7 +162,7 @@ class Maintenance {
         houseno: j['houseno'] ?? '',
         month: j['month'] ?? '',
         year: j['year'] ?? '',
-        amount: (j['amount'] ?? 0).toDouble(),
+        amount: (j['amount'] ?? 0).toDouble(), // backend may return int or double; cast handles both
         status: j['status'] ?? 'Pending',
         paidDate: j['paid_date'] as String?,
         transactionId: j['transaction_id'] as String?,

@@ -1,3 +1,12 @@
+/*
+ * committee_dashboard_tab.dart
+ *
+ * Overview dashboard for committee members. Fetches stats and recent notices
+ * in parallel, then displays a 2×2 stat card grid (families, pending complaints,
+ * notices, pending fees) and the 3 most recently issued notices.
+ * Shows a time-based greeting (Morning / Afternoon / Evening).
+ */
+
 import 'package:flutter/material.dart';
 import 'api_service.dart';
 import 'models.dart';
@@ -25,14 +34,14 @@ class _CommitteeDashboardTabState extends State<CommitteeDashboardTab> {
   Future<void> _load() async {
     setState(() => _loading = true);
     try {
-      final results = await Future.wait([
+      final results = await Future.wait([ // parallel fetch — stats and notices load simultaneously
         ApiService.getStats(),
         ApiService.getNotices(),
       ]);
       if (mounted) {
         setState(() {
           _stats = results[0] as DashboardStats;
-          _recentNotices = (results[1] as List<Notice>).take(3).toList();
+          _recentNotices = (results[1] as List<Notice>).take(3).toList(); // only the 3 most recent notices shown on dashboard
           _loading = false;
         });
       }
